@@ -10,7 +10,7 @@ metadata:
   longDescription: "To use the Mobile CI|CD service you must first agree to the Android SDK License Agreement, which can be read at the following URL: https://developer.android.com/studio/terms.html.\n If the box is not checked the installer will take no action."
   serviceName: aerogear-digger
   imageUrl: "http://design.jboss.org/aerogeardigger/logo/final/png/aerogeardigger_icon_256px.png"
-  documentationUrl: "https://aerogear.org/digger/"
+  documentationUrl: "https://docs.aerogear.org/external/apb/mobilecicd.html"
   providerDisplayName: "Red Hat, Inc."
 plans:
   - name: default
