@@ -283,7 +283,7 @@
       "name": "MEMORY_LIMIT",
       "displayName": "Memory Limit",
       "description": "Maximum amount of memory the container can use.",
-      "value": "{{ master_memory_limit | default('3Gi') }}"
+      "value": "{{ jenkins_master_memory_limit | default('3Gi') }}"
     },
     {
       "name": "CPU_LIMIT",
@@ -307,7 +307,7 @@
       "name": "VOLUME_CAPACITY",
       "displayName": "Volume Capacity",
       "description": "Volume space available for data, e.g. 512Mi, 2Gi.",
-      "value": "{{ master_volume_capacity | default('40Gi') }}",
+      "value": "{{ jenkins_master_volume_capacity | default('40Gi') }}",
       "required": true
     },
     {

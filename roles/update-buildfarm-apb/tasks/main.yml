@@ -85,6 +85,7 @@
   - name: "Copy required tarball"
     command: "oc -n {{ namespace }} rsync /tmp/aerogear-digger-installer/ {{ android_sdk_podname }}:{{ android_sdk_home }}/tools/templates/gradle/wrapper/ --include='gradle-wrapper.tar.gz'"
     changed_when: False
+    ignore_errors: yes
 
   - name: "Unarchive gradle files"
     command: "oc -n {{ namespace }} exec {{ android_sdk_podname }} -i -- bash -c 'tar -zxvf {{ android_sdk_home }}/tools/templates/gradle/wrapper/gradle-wrapper.tar.gz -C {{ android_sdk_home }}/tools/templates/gradle/wrapper'"
