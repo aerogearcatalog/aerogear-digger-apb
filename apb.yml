@@ -1,12 +1,12 @@
 version: 1.0
-name: aerogear-digger-apb
+name: aerogear-digger-test-apb
 description: Mobile CI|CD integrates with Jenkins Pipelines to test and build your mobile binaries.
 bindable: False
 async: optional
 tags:
   - mobile-service
 metadata:
-  displayName: Mobile CI|CD
+  displayName: Mobile CI|CD Test
   longDescription: "To use the Mobile CI|CD service you must first agree to the Android SDK License Agreement, which can be read at the following URL: https://developer.android.com/studio/terms.html.\n If the box is not checked the installer will take no action."
   serviceName: aerogear-digger
   imageUrl: "http://design.jboss.org/aerogeardigger/logo/final/png/aerogeardigger_icon_256px.png"
@@ -80,3 +80,46 @@ plans:
       required: False
       updatable: True
       display_group: Android SDK
+    - name: ANDROID_SDK_VOLUME_SIZE
+      default: "10Gi"
+      type: string
+      description: "Please specify the volume size for Android SDK"
+      title: Volume Size for Android SDK
+      required: False
+      display_group: Android SDK
+    - name: ANDROID_SLAVE_CPU_REQUEST
+      default: "500m"
+      type: string
+      description: "Please specify the CPU resource to request for the Android slave pods"
+      title: CPU resource to request for the Android slave pods
+      required: False
+      display_group: Android Slave Pods
+    - name: ANDROID_SLAVE_CPU_LIMIT
+      default: "2000m"
+      type: string
+      description: "Please specify the CPU resource limit for the Android slave pods"
+      title: CPU resource limit for the Android slave pods
+      required: False
+      display_group: Android Slave Pods
+    - name: ANDROID_SLAVE_MEMORY_REQUEST
+      default: "500Mi"
+      type: string
+      description: "Please specify the memory resource to request for the Android slave pods"
+      title: Memory resource to request for the Android slave pods
+      required: False
+      display_group: Android Slave Pods
+    - name: ANDROID_SLAVE_MEMORY_LIMIT
+      default: "3000Mi"
+      type: string
+      description: "Please specify the memory resource limit for the Android slave pods"
+      title: Memory resource limit for the Android slave pods
+      required: False
+      display_group: Android Slave Pods
+    - name: JENKINS_VOLUME_SIZE
+      default: "40Gi"
+      type: string
+      description: "Please specify the volume size for Jenkins"
+      title: Volume Size for Jenkins
+      required: False
+      display_group: Jenkins
+    

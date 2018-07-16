@@ -1,11 +1,16 @@
 ---
 android_sdk_home: "{{ lookup('env', 'ANDROID_HOME')|default('/opt/android-sdk-linux', True) }}"
+android_sdk_volume_capacity: "{{ lookup('vars', 'ANDROID_SDK_VOLUME_SIZE')|default('10Gi', True) }}"
 android_slave_image: "docker.io/aerogear/digger-android-slave-image:1.0.0-alpha"
 android_slave_image_pull: true
 android_slave_instance_cap: 3
 android_slave_idle_minutes: 3
+android_slave_resource_cpu_request: "{{ lookup('vars', 'ANDROID_SLAVE_CPU_REQUEST')|default('500m', True) }}"
+android_slave_resource_cpu_limit: "{{ lookup('vars', 'ANDROID_SLAVE_CPU_LIMIT')|default('2000m', True) }}"
+android_slave_resource_memory_request: "{{ lookup('vars', 'ANDROID_SLAVE_MEMORY_REQUEST')|default('500Mi', True) }}"
+android_slave_resource_memory_limit: "{{ lookup('vars', 'ANDROID_SLAVE_MEMORY_LIMIT')|default('3000Mi', True) }}"
 
 java_sdk_home: "{{ lookup('env', 'JAVA_HOME')|default('/etc/alternatives/java_sdk_1.8.0', True) }}"
 
 jenkins_master_memory_limit: 3Gi
-jenkins_master_volume_capacity: 40Gi
+jenkins_master_volume_capacity: "{{ lookup('vars', 'JENKINS_VOLUME_SIZE')|default('40Gi', True) }}"

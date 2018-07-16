@@ -90,7 +90,7 @@
   - deploy-sdk-pod
 
 - name: "Deploy the Android SDK image"
-  command: "oc new-app -f {{ buildfarm_templates_dir }}/android-sdk-persistent-template.json -n {{ namespace }}"
+  command: "oc new-app -f {{ buildfarm_templates_dir }}/android-sdk-persistent-template.json -e 'ANDROID_SDK_VOLUME_CAPACITY={{ android_sdk_volume_capacity }}' -n {{ namespace }}"
   register: android_create_result
   changed_when: >
     android_create_result.rc == 0 or
@@ -217,6 +217,8 @@
     - name: "Copy required tarball"
       command: "oc -n {{ namespace }} rsync /tmp/aerogear-digger-installer/ {{ android_sdk_podname }}:{{ android_sdk_home }}/tools/templates/gradle/wrapper/ --include='gradle-wrapper.tar.gz'"
       changed_when: False
+      # ignore rsync errors as sometimes the command will fail due to permission errors. The next command will fail anyway if the file is not copied over.
+      ignore_errors: yes
 
     - name: "Unarchive gradle files"
       command: "oc -n {{ namespace }} exec {{ android_sdk_podname }} -i -- bash -c 'tar -zxvf {{ android_sdk_home }}/tools/templates/gradle/wrapper/gradle-wrapper.tar.gz -C {{ android_sdk_home }}/tools/templates/gradle/wrapper'"
